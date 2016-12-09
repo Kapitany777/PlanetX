@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="PlanetX.SilverlightControlCredits"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="370" d:DesignWidth="400"
+             Width="259" Height="320">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="StoryboardCreditsShow" RepeatBehavior="1x">
+            <DoubleAnimation Storyboard.TargetName="BorderCredits" Storyboard.TargetProperty="Opacity" From="0.0" To="0.9" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+        <Storyboard x:Name="StoryboardCreditsHide" RepeatBehavior="1x" Completed="StoryboardCreditsHide_Completed">
+            <DoubleAnimation Storyboard.TargetName="BorderCredits" Storyboard.TargetProperty="Opacity" From="0.9" To="0.0" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+        <ImageBrush x:Name="ImageCreditsBackground" Stretch="None" ImageSource="/PlanetX;component/Images/credits.png" AlignmentY="Top" />
+    </UserControl.Resources>
+
+    <Border Name="BorderCredits" BorderBrush="Transparent" BorderThickness="0" CornerRadius="0" Background="{StaticResource ImageCreditsBackground}" Opacity="0.9">
+        <Grid x:Name="LayoutRoot">
+            <StackPanel Orientation="Vertical" Margin="0 80 0 0">
+                <TextBlock Text="Programming: Kapitány" Style="{StaticResource TextBlockCredit}" />
+                <TextBlock Text="Design: Samuraj, Kapitány, Feri" Style="{StaticResource TextBlockCredit}" />
+                
+                <TextBlock Text="Graphics: Krees, Grumbel" Style="{StaticResource TextBlockCredit}" />
+
+                <HyperlinkButton Content="OpenGameArt" NavigateUri="http://opengameart.org/" TargetName="_blank" Style="{StaticResource HyperlinkCredit}" />
+                                
+                <TextBlock Text="Music: Samuraj" Style="{StaticResource TextBlockCredit}" />
+                <TextBlock Text="Sound effects: Kapitány (SFXR)" Style="{StaticResource TextBlockCredit}" />
+                <TextBlock Text="Testing: Kapitány, Feri" Style="{StaticResource TextBlockCredit}" />
+
+                <HyperlinkButton Content="Lidércfény Games" NavigateUri="http://games.lidercfeny.hu/" TargetName="_blank" Style="{StaticResource HyperlinkCredit}" />
+
+                <Button Name="ButtonOk" Content="Ok" Width="120" Margin="0 10 0 20" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

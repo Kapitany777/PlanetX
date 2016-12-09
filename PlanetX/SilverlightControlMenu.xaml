@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="PlanetX.SilverlightControlMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="207" d:DesignWidth="259"
+             Width="259" Height="207">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="StoryboardMenuShow" RepeatBehavior="1x">
+            <DoubleAnimation Storyboard.TargetName="BorderMenu" Storyboard.TargetProperty="Opacity" From="0.0" To="0.9" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+        <Storyboard x:Name="StoryboardMenuHide" RepeatBehavior="1x" Completed="StoryboardMenuHide_Completed">
+            <DoubleAnimation Storyboard.TargetName="BorderMenu" Storyboard.TargetProperty="Opacity" From="0.9" To="0.0" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+        <ImageBrush x:Name="ImageMenuBackground" Stretch="None" ImageSource="/PlanetX;component/Images/menu.png" />
+    </UserControl.Resources>
+    
+    <Border Name="BorderMenu" BorderBrush="Transparent" BorderThickness="0" CornerRadius="0" Background="{StaticResource ImageMenuBackground}" Opacity="0.9">
+        <Grid x:Name="LayoutRoot">
+            <StackPanel Orientation="Vertical" Margin="0 70 0 0">
+                <TextBlock Name="MenuNewGame" Text="New game" Style="{StaticResource TextBlockMenuItem}" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Name="MenuEasy" Text="Easy" Style="{StaticResource TextBlockMenuItemDifficulty}" MouseLeftButtonDown="MenuEasy_MouseLeftButtonDown" />
+                    <TextBlock Name="MenuNormal" Text="Normal" Style="{StaticResource TextBlockMenuItemDifficulty}" MouseLeftButtonDown="MenuNormal_MouseLeftButtonDown" />
+                    <TextBlock Name="MenuHard" Text="Hard" Style="{StaticResource TextBlockMenuItemDifficulty}" MouseLeftButtonDown="MenuHard_MouseLeftButtonDown" />
+                </StackPanel>
+                
+                <TextBlock Name="MenuReturnToGame" Text="Return to game" Style="{StaticResource TextBlockMenuItem}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PlanetX.SilverlightControlPlanet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="50" d:DesignWidth="50"
+             Height="50" Width="50"
+             Canvas.ZIndex="2">
+
+    <UserControl.Resources>
+        <ImageBrush x:Name="ImagePlanetPlayer" Stretch="Fill" ImageSource="/PlanetX;component/Images/planet_player.png" />
+        <ImageBrush x:Name="ImagePlanetEnemy" Stretch="Fill" ImageSource="/PlanetX;component/Images/planet_enemy.png" />
+        <ImageBrush x:Name="ImagePlanetNeutral" Stretch="Fill" ImageSource="/PlanetX;component/Images/planet_neutral.png" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource ImagePlanetNeutral}">
+
+        <ToolTipService.ToolTip>
+            <ToolTip Background="Black" Opacity="0.7" Foreground="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <TextBlock Text="Name: " Style="{StaticResource LabelTooltip}" />
+                        <TextBlock Text="{Binding PlanetName}" Foreground="White" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <TextBlock Text="Ships: " Style="{StaticResource LabelTooltip}" />
+                        <TextBlock Text="{Binding ShipNum}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <TextBlock Text="Max production: " Style="{StaticResource LabelTooltip}" />
+                        <TextBlock Text="{Binding MaxProd}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="3">
+                        <TextBlock Text="Production level: " Style="{StaticResource LabelTooltip}" />
+                        <TextBlock Text="{Binding Production}" />
+                    </StackPanel>
+                </Grid>
+            </ToolTip>
+        </ToolTipService.ToolTip>
+
+        <TextBlock x:Name="TextBlockShipNum" Text="{Binding ShipNum}" Style="{StaticResource PlanetInfo}" />
+    </Grid>
+</UserControl>

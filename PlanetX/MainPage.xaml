@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="PlanetX.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="553" d:DesignWidth="703"
+             Width="703" Height="553" xmlns:my="clr-namespace:PlanetX" MouseWheel="UserControl_MouseWheel">
+
+    <UserControl.Resources>
+        <ImageBrush x:Name="ImagePlanetXHud" Stretch="None" ImageSource="/PlanetX;component/Images/planetxhud.png" />
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource ImagePlanetXHud}" MouseRightButtonDown="LayoutRoot_MouseRightButtonDown">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="395" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <MediaElement x:Name="GameMusic" Source="/PlanetX;component/Sounds/genesis04.mp3" AutoPlay="True" MediaEnded="GameMusic_MediaEnded"></MediaElement>
+        <MediaElement x:Name="SoundClick" Source="/PlanetX;component/Sounds/katt.mp3" AutoPlay="False" ></MediaElement>
+        <MediaElement x:Name="SoundStart" Source="/PlanetX;component/Sounds/start.mp3" AutoPlay="False" ></MediaElement>
+        <MediaElement x:Name="SoundTooFar" Source="/PlanetX;component/Sounds/toofar.mp3" AutoPlay="False" ></MediaElement>
+
+        <StackPanel Orientation="Horizontal" Background="Transparent">
+            <TextBlock Name="TextBlockMenu" Text="MENU" Style="{StaticResource TextBlockMenu}" MouseLeftButtonDown="TextBlockMenu_MouseLeftButtonDown" />
+            <TextBlock Name="TextBlockCredits" Text="CREDITS" Style="{StaticResource TextBlockMenu}" MouseLeftButtonDown="TextBlockCredits_MouseLeftButtonDown" />
+            <TextBlock Name="TextBlockEdges" Text="EDGES" Style="{StaticResource TextBlockMenu}" MouseLeftButtonDown="TextBlockEdges_MouseLeftButtonDown" />
+            <Image Name="ImageSoundIcon" Source="/PlanetX;component/Images/sound_on_32_inv.png" Style="{StaticResource ImageSound}" MouseLeftButtonDown="ImageSoundIcon_MouseLeftButtonDown" />
+
+            <TextBlock Name="TextBlockTimeLabel" Text="Time: " Style="{StaticResource TextBlockMenu}" />
+            <TextBlock Name="TextBlockTime" Style="{StaticResource TextBlockMenuTime}" />
+        </StackPanel>
+        <TextBlock Text="PlanetX V1.16.01 2016.12.09." Style="{StaticResource TextBlockVersion}" />
+
+        <Canvas x:Name="CanvasGame" Grid.Row="1" Width="703" Height="395" Loaded="CanvasGame_Loaded" Margin="0" Background="Black">
+            <Canvas.Clip>
+                <RectangleGeometry Rect="0 0 703 395" />
+            </Canvas.Clip>
+
+            <Image Name="ImageBackground" Source="/PlanetX;component/Images/planetx.png" Width="703" Height="395" Stretch="None" Margin="0" />
+            <my:SilverlightControlFrame Canvas.Left="19" Canvas.Top="18" x:Name="silverlightControlFrame" Visibility="Collapsed" />
+            <my:SilverlightControlMenu Canvas.ZIndex="1000" x:Name="silverlightControlMenu" Visibility="Collapsed" />
+            <my:SilverlightControlCredits Canvas.ZIndex="1000" x:Name="silverlightControlCredits" Visibility="Collapsed" />
+            <my:SilverlightControlGameOver Canvas.ZIndex="1000" x:Name="silverlightControlGameOver" Visibility="Collapsed" />
+            <my:SilverlightControlRadius x:Name="silverlightControlRadius" Visibility="Collapsed" />
+        </Canvas>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Image Name="ImageFace" Source="/PlanetX;component/Images/face_player.png" Stretch="Fill" Width="100" Height="90" Margin="0 17 0 0" />
+            <my:SilverlightControlInfoPanel Margin="20 8 0 0" x:Name="silverlightControlInfoPanel" />
+            <my:SilverlightControlGameInfo Margin="15 8 0 0" x:Name="silverlightControlGameInfo" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
